@@ -4,7 +4,9 @@
   "description": "js utils",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "cross-env NODE_ENV=development webpack"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "clean-webpack-plugin": "^2.0.2",
+    "cross-env": "^5.2.0",
     "webpack": "^3.6.0"
   }
 }
