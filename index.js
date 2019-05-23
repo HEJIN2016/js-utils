@@ -1,10 +1,10 @@
 import Base64 from './encrypt/base64';
 import Md5 from './encrypt/md5';
-// require('./common/common');
-// require('./common/valid');
-// require('./common/worldCountry');
+import Common from './common/common';
+import Valid from './common/valid';
+import Country from './common/worldCountry';
 import Explorer from  './explorer/explorer';
 
 export default {
-    Base64, Md5, Explorer
+    Base64, Md5, Explorer, Common, Valid, Country
 }
