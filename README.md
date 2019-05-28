@@ -36,45 +36,61 @@ Common.default.getRandomNum(1,30);
 ### Api
 #### Base64模块
   1.Base64编码
-  Utils.Base64.encode("12");
+
+   Utils.Base64.encode("12");
+
   2.Base64解码
+
   Utils.Base64.decode("MTI=")
+
   
 #### Md5模块
   md5加密
+  
   Utils.Md5("test");
   
 #### Common模块
   1.百度SEO
+  
   Utils.Common.seo()
   
   2.函数节流 节流函数fn
+  
   Utils.Common.throttle(fn)
   
   3.base64位码转blob对象
+  
   @params dataurl - dataUrl
+  
   Utils.Common.dataURLtoBlob(dataUrl)
   
   4.获取n-m大小的随机整数
+  
   Utils.Common.getRandomNum(1, 10)；
   
   5.将数字转成3位分隔符
+  
   Utils.Common.splitNum(12003)  // 12,000
   
 #### Valid 表单校验模块
   1.大陆手机号判断
+  
   Utils.Valid.isPhone(15074956533)
   
   2.全中文汉字校验
+  
   Utils.Valid.ChineseWordValid("中国")
   
   3.英文和数字校验
+  
   Utils.Valid.wordNumValid("123sdd"); // true
   
   4.emoji表情校验
+  
   Utils.Valid.emojiValid(params)
   
   5.大陆身份证校验
+  
   Utils.Valid.IdentityCodeValid("430125455566556687") // false
   
 #### Country模块 -- 全世界国家和地区的英文名、中文名、英文简称、国家区号数组
@@ -88,9 +104,11 @@ Common.default.getRandomNum(1,30);
   console.log(Utils.Explorer.getUrlParam("a")); // 1
 ```
   2.获取ie浏览器版本
+  
   tils.Explorer.IEVersion();
   
   3.浏览器滚动到底部时执行fn函数
+  
   window.addEventListener('scroll', ()=>{
     Utils.Explorer.ScrollBottom(fn);
   })
@@ -99,6 +117,7 @@ Common.default.getRandomNum(1,30);
   })
   
   4.判断手机浏览器版本
+  
   console.log(Utils.Explorer.explorerType);
   
   返回参数说明：
