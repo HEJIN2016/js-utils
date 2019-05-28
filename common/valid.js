@@ -7,7 +7,7 @@ const isPhone = (val)=>{
 * 全中文校验
 * */
 function ChineseWordValid (val) {
-    return /^[\u4E00-\u9FA5]{1,5}$/.test(val);
+    return /^[\u4E00-\u9FA5]+$/.test(val);
 }
 
 // 英文和数字校验

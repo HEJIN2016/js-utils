@@ -1,6 +1,6 @@
 {
-  "name": "js-utils",
-  "version": "1.0.0",
+  "name": "h-utils.js",
+  "version": "0.0.1",
   "description": "js utils",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,11 @@
     "url": "git+https://github.com/HEJIN2016/js-utils.git"
   },
   "keywords": [
-    "utils"
+    "utils",
+    "javascript"
   ],
   "author": "hejin",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/HEJIN2016/js-utils/issues"
   },
