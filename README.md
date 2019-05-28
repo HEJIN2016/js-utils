@@ -105,7 +105,7 @@ Common.default.getRandomNum(1,30);
 ```
   2.获取ie浏览器版本
   
-  tils.Explorer.IEVersion();
+  Utils.Explorer.IEVersion();
   
   3.浏览器滚动到底部时执行fn函数
   
