@@ -9,13 +9,15 @@
 <script>console.log(Utils.Common.getRandomNum(1,30))</script>
 ```
 2.import 调用
+
 npm install h-utils.js -D
 ```javascript
 import Utils from 'h-utils.js';
 console.log(Utils.Common.getRandomNum(1,30));
 ```
-``````
+
 3.require引用
+
 npm install h-utils.js -D
 ```javascript
 const Utils = require('h-utils.js').default;
