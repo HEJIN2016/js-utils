@@ -128,7 +128,10 @@ Common.default.getRandomNum(1,30);
     isiOS：是否为ios环境
     isWeixin：是否为微信环境
     isQQ： 是否为qq环境
+    
+  5.浏览器从底部减速缓慢滚动到顶部
   
+  Utils.Explorer.scrollToTop()
   
   
   

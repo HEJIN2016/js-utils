@@ -60,8 +60,24 @@ const explorerType = {
     isAndroid, isiOS, isWeixin, isQQ
 };
 
+const scrollToTop = function () {
+    let height = document.documentElement.scrollTop;
+    clearInterval(window.timer);
+    window.timer = null;
+    let target = 0;
+    window.timer = setInterval(function () {
+        target = document.documentElement.scrollTop;
+        target -= Math.ceil(target/10); // 做减速运动
+        window.scrollTo(0, target);
+        if (target == 0) {
+            clearInterval(timer);
+            window.timer = null;
+        }
+    }, 10);
+};
+
 export const Explorer = {
-    getUrlParam, IEVersion, ScrollBottom, explorerType
+    getUrlParam, IEVersion, ScrollBottom, explorerType, scrollToTop
 };
 
 export default Explorer;
