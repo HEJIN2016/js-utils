@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,48 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _base = __webpack_require__(1);
-
-var _base2 = _interopRequireDefault(_base);
-
-var _md = __webpack_require__(2);
-
-var _md2 = _interopRequireDefault(_md);
-
-var _common = __webpack_require__(3);
-
-var _common2 = _interopRequireDefault(_common);
-
-var _valid = __webpack_require__(4);
-
-var _valid2 = _interopRequireDefault(_valid);
-
-var _worldCountry = __webpack_require__(5);
-
-var _worldCountry2 = _interopRequireDefault(_worldCountry);
-
-var _explorer = __webpack_require__(6);
-
-var _explorer2 = _interopRequireDefault(_explorer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    Base64: _base2.default, Md5: _md2.default, Explorer: _explorer2.default, Common: _common2.default, Valid: _valid2.default, Country: _worldCountry2.default
-};
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var Base64 = {
+var Base64 = exports.Base64 = {
     _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
     encode: function encode(e) {
         var t = "";
@@ -229,7 +188,7 @@ var Base64 = {
 exports.default = Base64;
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -238,7 +197,8 @@ exports.default = Base64;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-function md5(string) {
+exports.Md5 = Md5;
+function Md5(string) {
     function md5_RotateLeft(lValue, iShiftBits) {
         return lValue << iShiftBits | lValue >>> 32 - iShiftBits;
     }
@@ -443,10 +403,10 @@ function md5(string) {
     return (md5_WordToHex(a) + md5_WordToHex(b) + md5_WordToHex(c) + md5_WordToHex(d)).toLowerCase();
 }
 
-exports.default = md5;
+exports.default = Md5;
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -506,6 +466,14 @@ var splitNum = function splitNum(num) {
     return num.replace(/\B(?=(?:\d{3})+\b)/g, ',');
 };
 
+var Common = exports.Common = {
+    seo: seo,
+    throttle: throttle,
+    dataURLtoBlob: dataURLtoBlob,
+    getRandomNum: getRandomNum,
+    splitNum: splitNum
+};
+
 exports.default = {
     seo: seo,
     throttle: throttle,
@@ -515,7 +483,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -548,6 +516,12 @@ function wordNumValid(val) {
 function emojiValid(val) {
     var regStr = /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig;
     return regStr.test(val);
+}
+
+// 邮箱校验
+function emailValid(val) {
+    return (/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(val)
+    );
 }
 
 /*
@@ -596,12 +570,16 @@ var IdentityCodeValid = function IdentityCodeValid(code) {
     return pass;
 };
 
+var Valid = exports.Valid = {
+    isPhone: isPhone, ChineseWordValid: ChineseWordValid, wordNumValid: wordNumValid, emojiValid: emojiValid, IdentityCodeValid: IdentityCodeValid
+};
+
 exports.default = {
     isPhone: isPhone, ChineseWordValid: ChineseWordValid, wordNumValid: wordNumValid, emojiValid: emojiValid, IdentityCodeValid: IdentityCodeValid
 };
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -610,7 +588,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = [{
+var Country = exports.Country = [{
     "name": "Andorra",
     "cnName": "安道尔",
     "abbr": "AD",
@@ -1847,8 +1825,10 @@ exports.default = [{
     "code": "496"
 }];
 
+exports.default = Country;
+
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1918,11 +1898,129 @@ var explorerType = {
     isAndroid: isAndroid, isiOS: isiOS, isWeixin: isWeixin, isQQ: isQQ
 };
 
-var Explorer = {
+var Explorer = exports.Explorer = {
     getUrlParam: getUrlParam, IEVersion: IEVersion, ScrollBottom: ScrollBottom, explorerType: explorerType
 };
 
 exports.default = Explorer;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _export = __webpack_require__(7);
+
+Object.keys(_export).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function get() {
+            return _export[key];
+        }
+    });
+});
+
+var _base = __webpack_require__(0);
+
+var _base2 = _interopRequireDefault(_base);
+
+var _md = __webpack_require__(1);
+
+var _md2 = _interopRequireDefault(_md);
+
+var _common = __webpack_require__(2);
+
+var _common2 = _interopRequireDefault(_common);
+
+var _valid = __webpack_require__(3);
+
+var _valid2 = _interopRequireDefault(_valid);
+
+var _worldCountry = __webpack_require__(4);
+
+var _worldCountry2 = _interopRequireDefault(_worldCountry);
+
+var _explorer = __webpack_require__(5);
+
+var _explorer2 = _interopRequireDefault(_explorer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    Base64: _base2.default, Md5: _md2.default, Explorer: _explorer2.default, Common: _common2.default, Valid: _valid2.default, Country: _worldCountry2.default
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _base = __webpack_require__(0);
+
+Object.defineProperty(exports, 'Base64', {
+  enumerable: true,
+  get: function get() {
+    return _base.Base64;
+  }
+});
+
+var _md = __webpack_require__(1);
+
+Object.defineProperty(exports, 'Md5', {
+  enumerable: true,
+  get: function get() {
+    return _md.Md5;
+  }
+});
+
+var _common = __webpack_require__(2);
+
+Object.defineProperty(exports, 'Common', {
+  enumerable: true,
+  get: function get() {
+    return _common.Common;
+  }
+});
+
+var _valid = __webpack_require__(3);
+
+Object.defineProperty(exports, 'Valid', {
+  enumerable: true,
+  get: function get() {
+    return _valid.Valid;
+  }
+});
+
+var _worldCountry = __webpack_require__(4);
+
+Object.defineProperty(exports, 'Country', {
+  enumerable: true,
+  get: function get() {
+    return _worldCountry.Country;
+  }
+});
+
+var _explorer = __webpack_require__(5);
+
+Object.defineProperty(exports, 'Explorer', {
+  enumerable: true,
+  get: function get() {
+    return _explorer.Explorer;
+  }
+});
 
 /***/ })
 /******/ ])["default"];

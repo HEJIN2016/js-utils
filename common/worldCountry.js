@@ -1,4 +1,4 @@
-export default [{
+export const Country = [{
     "name": "Andorra",
     "cnName": "安道尔",
     "abbr": "AD",
@@ -1233,4 +1233,6 @@ export default [{
     "cnName": "蒙古国 蒙古",
     "abbr": "MN",
     "code": "496"
-}]
+}];
+
+export default Country;

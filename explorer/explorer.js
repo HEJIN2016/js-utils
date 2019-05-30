@@ -60,8 +60,8 @@ const explorerType = {
     isAndroid, isiOS, isWeixin, isQQ
 };
 
-const Explorer = {
+export const Explorer = {
     getUrlParam, IEVersion, ScrollBottom, explorerType
-}
+};
 
 export default Explorer;

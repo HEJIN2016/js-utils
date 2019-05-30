@@ -47,12 +47,20 @@ const splitNum = function (num) {
     return num.replace(/\B(?=(?:\d{3})+\b)/g, ',')
 };
 
+export const Common = {
+    seo,
+    throttle,
+    dataURLtoBlob,
+    getRandomNum,
+    splitNum
+};
+
 export default {
-    seo: seo,
-    throttle: throttle,
-    dataURLtoBlob: dataURLtoBlob,
-    getRandomNum: getRandomNum,
-    splitNum: splitNum
+    seo,
+    throttle,
+    dataURLtoBlob,
+    getRandomNum,
+    splitNum
 }
 
 

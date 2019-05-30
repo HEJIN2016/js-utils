@@ -26,10 +26,10 @@ console.log(Utils.Common.getRandomNum(1,30));
 
 4.按需引用
 ```javascript
-import Common from 'h-utils.js/common/common';
+import { Common } from 'h-utils.js';
 console.log(Common.getRandomNum(1,30));
 
-const Common = require('h-utils.js/common/common');
+const Common = require('h-utils.js');
 Common.default.getRandomNum(1,30);
 ```
 
@@ -92,6 +92,9 @@ Common.default.getRandomNum(1,30);
   5.大陆身份证校验
   
   Utils.Valid.IdentityCodeValid("430125455566556687") // false
+  
+  6.邮箱校验
+  Utils.Valid.emailValid()
   
 #### Country模块 -- 全世界国家和地区的英文名、中文名、英文简称、国家区号数组
   console.log(Utils.Country);

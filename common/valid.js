@@ -21,6 +21,11 @@ function emojiValid(val) {
     return (regStr.test(val))
 }
 
+// 邮箱校验
+function emailValid (val) {
+    return /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(val);
+}
+
 /*
 * 大陆身份证校验
 * */
@@ -68,6 +73,9 @@ const IdentityCodeValid = function (code) {
     return pass;
 };
 
+export const Valid = {
+    isPhone, ChineseWordValid, wordNumValid, emojiValid, IdentityCodeValid
+};
 
 export default {
     isPhone, ChineseWordValid, wordNumValid, emojiValid, IdentityCodeValid

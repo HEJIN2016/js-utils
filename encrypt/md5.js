@@ -1,4 +1,4 @@
-function md5(string) {
+export function Md5(string) {
     function md5_RotateLeft(lValue, iShiftBits) {
         return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
     }
@@ -202,4 +202,4 @@ function md5(string) {
     return (md5_WordToHex(a) + md5_WordToHex(b) + md5_WordToHex(c) + md5_WordToHex(d)).toLowerCase();
 }
 
-export default md5;
+export default Md5;
