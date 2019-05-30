@@ -29,7 +29,7 @@ console.log(Utils.Common.getRandomNum(1,30));
 import { Common } from 'h-utils.js';
 console.log(Common.getRandomNum(1,30));
 
-const Common = require('h-utils.js');
+const Common = require('h-utils.js').Common;
 Common.default.getRandomNum(1,30);
 ```
 
