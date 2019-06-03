@@ -12,17 +12,17 @@ module.exports = {
         // globalObject: 'this' // 兼容node和浏览器运行，避免window is not undefined情况
     },
     module: {
-        // rules: [
-        //     {
-        //         test: /\.js$/,
-        //         use: [{
-        //             loader: 'babel-loader',
-        //             options: {
-        //                 presets: ['es2015']
-        //             }
-        //         }]
-        //     }
-        // ]
+        rules: [
+            {
+                test: /\.js$/,
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    }
+                }]
+            }
+        ]
     },
     devServer: {
         contentBase: path.join(__dirname, "dev"),

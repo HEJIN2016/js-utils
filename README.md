@@ -107,17 +107,20 @@ Common.default.getRandomNum(1,30);
   console.log(Utils.Explorer.getUrlParam("a")); // 1
 ```
   2.获取ie浏览器版本
-  
-  Utils.Explorer.IEVersion();
+  ```javascript
+    Utils.Explorer.IEVersion();
+  ```
   
   3.浏览器滚动到底部时执行fn函数
-  
+  ```javascript
   window.addEventListener('scroll', ()=>{
     Utils.Explorer.ScrollBottom(fn);
   })
   window.addEventListener('touchmove', ()=>{
     Utils.Explorer.ScrollBottom(fn);
   })
+   ```
+  
   
   4.判断手机浏览器版本
   
