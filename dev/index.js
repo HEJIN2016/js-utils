@@ -6,3 +6,6 @@ console.log(Utils);
 
 import { Md5 } from "../index";
 console.log(Md5);
+
+const Common = require('../common/common').default;
+console.log(Common);

@@ -26,10 +26,10 @@ console.log(Utils.Common.getRandomNum(1,30));
 
 4.按需引用
 ```javascript
-import { Common } from 'h-utils.js';
+import { Common } from 'h-utils.js/common/common';
 console.log(Common.getRandomNum(1,30));
 
-const Common = require('h-utils.js').Common;
+const Common = require('h-utils.js/common/common').default;
 Common.default.getRandomNum(1,30);
 ```
 
