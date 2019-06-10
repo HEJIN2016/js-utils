@@ -1,11 +1,11 @@
 {
   "name": "h-utils.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "js utils",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --config webpack.dev.config.js"
+    "dev": "webpack-dev-server --config webpack.dev.config.js --hot --inline"
   },
   "repository": {
     "type": "git",

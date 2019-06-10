@@ -1,5 +1,8 @@
-import { Base64 } from "../encrypt/base64";
-console.log(Base64);
+// import { Base64 } from "../encrypt/base64";
+// console.log(Base64);
 
-import { Explorer } from "../index";
-console.log(Explorer);
+import Utils from "../index";
+console.log(Utils);
+
+import { Md5 } from "../index";
+console.log(Md5);

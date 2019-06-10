@@ -28,7 +28,7 @@ module.exports = {
         contentBase: path.join(__dirname, "dev"),
         clientLogLevel: 'warning',
         hot: true,
-        // compress: true,
+        compress: true,
         host: HOST,
         port: PORT,
         open: false

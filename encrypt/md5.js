@@ -1,4 +1,4 @@
-export function Md5(string) {
+export const Md5 = function(string) {
     function md5_RotateLeft(lValue, iShiftBits) {
         return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
     }
