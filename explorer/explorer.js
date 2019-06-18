@@ -76,8 +76,12 @@ const scrollToTop = function () {
     }, 10);
 };
 
+const validInternet = function() {
+    return window.navigator.onLine;
+};
+
 export const Explorer = {
-    getUrlParam, IEVersion, ScrollBottom, explorerType, scrollToTop
+    getUrlParam, IEVersion, ScrollBottom, explorerType, scrollToTop, validInternet
 };
 
 export default Explorer;

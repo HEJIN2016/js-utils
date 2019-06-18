@@ -72,6 +72,14 @@ Common.default.getRandomNum(1,30);
   
   Utils.Common.splitNum(12003)  // 12,000
   
+  6.字符串/数字数组去重
+  
+  Utils.Common.unique(["a", "a","b"]); // ["a","b"]
+  
+  7.生成uuid
+  
+  Utils.Common.getUuid();
+  
 #### Valid 表单校验模块
   1.大陆手机号判断
   
@@ -119,6 +127,10 @@ Common.default.getRandomNum(1,30);
   window.addEventListener('touchmove', ()=>{
     Utils.Explorer.ScrollBottom(fn);
   })
+  ```
+  4.判断设备是否有网络权限
+  ```
+  Utils.Explorer.validInternet();   // true
    ```
   
   
