@@ -66,6 +66,11 @@ function getUuid() {
     return s.join("");
 }
 
+// 过滤掉某个字符串中的中文字符
+function filterChineseWord(str) {
+    return str.replace(/[\u4E00-\u9FA5]/g, '');
+}
+
 export const Common = {
     seo,
     throttle,
@@ -73,7 +78,8 @@ export const Common = {
     getRandomNum,
     splitNum,
     getUuid,
-    unique
+    unique,
+    filterChineseWord
 };
 
 export default Common;

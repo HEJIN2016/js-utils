@@ -80,6 +80,9 @@ Common.default.getRandomNum(1,30);
   
   Utils.Common.getUuid();
   
+  8.过滤某字符串中的中文字符
+  console.log(Utils.Common.filterChineseWord("我是js插件h-utils")); // jsh-utils
+  
 #### Valid 表单校验模块
   1.大陆手机号判断
   
