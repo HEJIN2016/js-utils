@@ -4,10 +4,11 @@ import Common from './common/common';
 import Valid from './common/valid';
 import Country from './common/worldCountry';
 import Explorer from  './explorer/explorer';
+import Cookie from './common/cookie'
 
 export * from './export';
 
 export default {
-    Base64, Md5, Explorer, Common, Valid, Country
+    Base64, Md5, Explorer, Common, Valid, Country, Cookie
 }
 

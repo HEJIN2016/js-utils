@@ -152,4 +152,13 @@ Common.default.getRandomNum(1,30);
   Utils.Explorer.scrollToTop()
   
   
+#### Cookie模块
+```javascript
+Utils.Cookie.set('name', 'value', { expires: 365, path: '/' });
+Utils.Cookie.get('name'); // => 'value'
+Utils.Cookie.remove('name');
+```
+
+  
+  
   
