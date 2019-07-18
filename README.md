@@ -36,20 +36,24 @@ Common.default.getRandomNum(1,30);
 ### Api
 #### Base64模块
   1.Base64编码
-
+```javascript
    Utils.Base64.encode("12");
+```
 
   2.Base64解码
-
+```javascript
   Utils.Base64.decode("MTI=")
+```
 
   
 #### Md5模块
   md5加密
-  
+```javascript
   Utils.Md5("test");
+```
   
 #### Common模块
+```javascript
   1.百度SEO
   
   Utils.Common.seo()
@@ -82,8 +86,10 @@ Common.default.getRandomNum(1,30);
   
   8.过滤某字符串中的中文字符
   console.log(Utils.Common.filterChineseWord("我是js插件h-utils")); // jsh-utils
+```
   
 #### Valid 表单校验模块
+```javascript
   1.大陆手机号判断
   
   Utils.Valid.isPhone(15074956533)
@@ -106,9 +112,12 @@ Common.default.getRandomNum(1,30);
   
   6.邮箱校验
   Utils.Valid.emailValid()
+```
   
 #### Country模块 -- 全世界国家和地区的英文名、中文名、英文简称、国家区号数组
+```javascript
   console.log(Utils.Country);
+```
   
 #### Explorer浏览器相关模块
   1.从浏览器序列化get参数路径中获取参数
@@ -138,8 +147,9 @@ Common.default.getRandomNum(1,30);
   
   
   4.判断手机浏览器版本
-  
+  ```javascript
   console.log(Utils.Explorer.explorerType);
+   ```
   
   返回参数说明：
     isAndroid： 是否为安卓环境
@@ -148,8 +158,9 @@ Common.default.getRandomNum(1,30);
     isQQ： 是否为qq环境
     
   5.浏览器从底部减速缓慢滚动到顶部
-  
+  ```javascript
   Utils.Explorer.scrollToTop()
+  ```
   
   
 #### Cookie模块
