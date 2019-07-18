@@ -1,8 +1,9 @@
 const HOST = "0.0.0.0";
 const PORT = 3200;
 const path = require('path');
+const portfinder = require("portfinder");
 
-module.exports = {
+let devWebpackConfig = {
     entry: {
         app: path.join(__dirname, 'dev', 'index.js')
     },
@@ -33,4 +34,15 @@ module.exports = {
         port: PORT,
         open: false
     }
-}
+};
+
+module.exports = new Promise((resolve, reject) => {
+  portfinder.basePort = PORT;
+  portfinder.getPort((err, port) => {
+    if (err) reject(err);
+    else {
+      devWebpackConfig.devServer.port = port;
+      resolve(devWebpackConfig);
+    }
+  })
+});
