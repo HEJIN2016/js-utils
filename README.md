@@ -24,7 +24,7 @@ const Utils = require('h-utils.js').default;
 console.log(Utils.Common.getRandomNum(1,30));
 ```
 
-4.按需引用
+4.按需引用（不推荐使用）
 ```javascript
 import { Common } from 'h-utils.js/common/common';
 console.log(Common.getRandomNum(1,30));
@@ -115,8 +115,10 @@ Common.default.getRandomNum(1,30);
 ```
   
 #### Country模块 -- 全世界国家和地区的英文名、中文名、英文简称、国家区号数组
+country未内置在Utils模块里，需要单独引入
 ```javascript
-  console.log(Utils.Country);
+import Country from 'h-utils.js/common/worldCountry'
+console.log(Country);
 ```
   
 #### Explorer浏览器相关模块
@@ -170,6 +172,18 @@ Utils.Cookie.get('name'); // => 'value'
 Utils.Cookie.remove('name');
 ```
 
+### 设计模式
+#### 观察者模式（发布-订阅模式）
+```javascript
+// 订阅消息
+Utils.Observer.subscribe('test', function (e) {
+  console.log(e);
+});
+// 发布消息
+Utils.Observer.publish('test', {
+  msg: '参数'
+});
+```
   
   
   
