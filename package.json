@@ -1,11 +1,12 @@
 {
   "name": "h-utils.js",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "js utils",
   "main": "dist/utils.min",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --config webpack.dev.config.js --hot --inline"
+    "dev": "webpack-dev-server --config webpack.dev.config.js --hot --inline",
+    "serve": "npm config set registry https://registry.npmjs.org/ && npm publish"
   },
   "repository": {
     "type": "git",
