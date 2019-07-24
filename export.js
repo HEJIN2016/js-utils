@@ -11,3 +11,5 @@ export { Country } from './common/worldCountry'
 export { Explorer } from './explorer/explorer'
 
 export { Cookie } from './common/cookie'
+
+export { Observer } from './pattern/observer'

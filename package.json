@@ -2,7 +2,7 @@
   "name": "h-utils.js",
   "version": "0.1.6",
   "description": "js utils",
-  "main": "index.js",
+  "main": "dist/utils.min",
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --config webpack.dev.config.js --hot --inline"
@@ -27,6 +27,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^2.0.2",
     "cross-env": "^5.2.0",
     "portfinder": "^1.0.21",
