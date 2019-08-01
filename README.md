@@ -5,7 +5,7 @@
 ### 使用方法
 1.直接调用
 ```html
-<script src="utils.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/h-utils.js/dist/utils.min.js"></script>
 <script>console.log(Utils.Common.getRandomNum(1,30))</script>
 ```
 2.import 调用
