@@ -24,14 +24,6 @@ const Utils = require('h-utils.js').default;
 console.log(Utils.Common.getRandomNum(1,30));
 ```
 
-4.按需引用（不推荐使用）
-```javascript
-import { Common } from 'h-utils.js/common/common';
-console.log(Common.getRandomNum(1,30));
-
-const Common = require('h-utils.js/common/common').default;
-Common.default.getRandomNum(1,30);
-```
 
 ### Api
 #### Base64模块
@@ -53,7 +45,7 @@ Common.default.getRandomNum(1,30);
 ```
   
 #### Common模块
-```javascript
+```
   1.百度SEO
   
   Utils.Common.seo()
@@ -86,10 +78,13 @@ Common.default.getRandomNum(1,30);
   
   8.过滤某字符串中的中文字符
   console.log(Utils.Common.filterChineseWord("我是js插件h-utils")); // jsh-utils
+  
+  9.nodejs获取本地ip
+  Utils.Common.getIPAdress()
 ```
   
 #### Valid 表单校验模块
-```javascript
+```
   1.大陆手机号判断
   
   Utils.Valid.isPhone(15074956533)
