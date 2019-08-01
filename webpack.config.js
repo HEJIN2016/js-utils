@@ -14,20 +14,22 @@ module.exports = {
         filename: 'utils.min.js'
         // globalObject: 'this' // 兼容node和浏览器运行，避免window is not undefined情况
     },
+    devtool: "#source-map",
     module: {
         rules: [
             {
                 test: /\.js$/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015']
-                    }
-                }]
+                loader: 'babel-loader'
             }
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin()
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                compress: { warnings: false }
+            },
+            sourceMap: true,
+            parallel: true
+        })
     ]
 };
