@@ -145,7 +145,7 @@ console.log(Country);
   
   4.判断手机浏览器版本
   ```javascript
-  console.log(Utils.Explorer.explorerType);
+  console.log(Utils.Explorer.explorerType());
    ```
   
   返回参数说明：

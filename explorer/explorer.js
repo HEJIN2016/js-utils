@@ -50,14 +50,16 @@ const ScrollBottom = function (fn) {
     }
 };
 
-const u = navigator.userAgent;
-const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-const isWeixin = u.indexOf('MicroMessenger') > -1;
-const isQQ = u.match(/\sQQ/i) == " QQ";
+const explorerType = function () {
+  const u = navigator.userAgent;
+  const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+  const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+  const isWeixin = u.indexOf('MicroMessenger') > -1;
+  const isQQ = u.match(/\sQQ/i) == " QQ";
 
-const explorerType = {
+  return {
     isAndroid, isiOS, isWeixin, isQQ
+  }
 };
 
 const scrollToTop = function () {
