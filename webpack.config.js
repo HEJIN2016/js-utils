@@ -12,7 +12,6 @@ module.exports = {
         libraryExport: 'default', // 兼容 ES6(ES2015) 的模块系统、CommonJS 和 AMD 模块规范
         library: ['Utils'],
         filename: 'utils.min.js'
-        // globalObject: 'this' // 兼容node和浏览器运行，避免window is not undefined情况
     },
     devtool: "#source-map",
     module: {
