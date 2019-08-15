@@ -80,7 +80,7 @@ console.log(Utils.Common.getRandomNum(1,30));
   console.log(Utils.Common.filterChineseWord("我是js插件h-utils")); // jsh-utils
   
   9.nodejs获取本地ip
-  Utils.Common.getIPAdress()
+  Utils.Common.getIPAddress()
 ```
   
 #### Valid 表单校验模块

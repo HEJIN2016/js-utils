@@ -72,7 +72,7 @@ function filterChineseWord(str) {
 }
 
 // nodejs获取本地ip
-function getIPAdress() {
+function getIPAddress() {
   let interfaces = os.networkInterfaces();
   for (let devName in interfaces) {
     let iface = interfaces[devName];
@@ -94,7 +94,7 @@ export const Common = {
     getUuid,
     unique,
     filterChineseWord,
-    getIPAdress
+    getIPAddress
 };
 
 export default Common;
