@@ -85,6 +85,144 @@ function getIPAddress() {
   }
 }
 
+function getStyle(el, styleName) {
+  if (el.currentStyle) return el.currentStyle[styleName];
+  if (getComputedStyle) return window.getComputedStyle(el, null)[styleName];
+  return el.style[styleName];
+}
+
+// getHeight
+function getHeight(el) {
+  let height;
+  // 已隐藏的元素
+  if (getStyle(el, "display") === "none") {
+    el.style.position = "absolute";
+    el.style.visibility = "hidden";
+    el.style.display = "block";
+    height = getStyle(el, "height");
+    el.style.position = "";
+    el.style.visibility = "";
+    el.style.display = "";
+    return parseFloat(height);
+  }
+  return parseFloat(getStyle(el, "height"));
+}
+
+// 获取元素样式值
+function getCurrentStyle(el, styleName) {
+  let styleValue;
+  // 已隐藏的元素
+  if (getStyle(el, "display") === "none") {
+    el.style.position = "absolute";
+    el.style.visibility = "hidden";
+    el.style.display = "block";
+    styleValue = getStyle(el, styleName);
+    el.style.position = "";
+    el.style.visibility = "";
+    el.style.display = "";
+    return (styleValue);
+  }
+  return (getStyle(el, styleName));
+}
+
+/**
+ * 实现jquery sildeToggle效果
+ * @param el dom元素
+ * @param time 动画时长，默认值300ms
+ * @param fn 回调函数
+ * @returns {boolean}
+ */
+function slideToggle(el, time, fn) {
+  if (!el) return false;
+  time = time || 300;
+  if (el.dataUid) return false; // 如该dom元素已有动画未处理完，则必须等到动画结束才执行
+
+  let splitTime = 5;
+
+  // 已隐藏的元素，下拉
+  if (getStyle(el, "display") === "none" || getHeight(el) === 0) {
+    let height = 0, paddingTop = 0, paddingBottom = 0;
+    let totalHeight = parseFloat(getCurrentStyle(el, "height"));
+    let totalPaddingTop = parseFloat(getCurrentStyle(el, "paddingTop"));
+    let totalPaddingBottom = parseFloat(getCurrentStyle(el, "paddingBottom"));
+
+    let splitHeight = totalHeight/(time/splitTime);
+    let splitPaddingTop = totalPaddingTop/(time/splitTime);
+    let splitPaddingBottom = totalPaddingBottom/(time/splitTime);
+
+    el.style.overflow = "hidden";
+    el.style.display = "block";
+
+    el.dataUid = setInterval(()=>{
+      if (height >= totalHeight) {
+        el.style.overflow = "";
+        el.style.height = "";
+        el.style.paddingTop = "";
+        el.style.paddingBottom = "";
+
+        if (fn && typeof fn === "function") fn();
+        clearInterval(el.dataUid);
+        el.dataUid = null;
+        delete el.dataUid;
+      } else {
+        el.style.height = height + "px";
+        el.style.paddingTop = paddingTop + "px";
+        el.style.paddingBottom = paddingBottom + "px";
+      }
+      height = height + splitHeight;
+      paddingTop = paddingTop + splitPaddingTop;
+      paddingBottom = paddingBottom + splitPaddingBottom;
+
+    }, splitTime);
+
+  } else {
+    // 上拉
+    let height = getHeight(el);
+    let splitHeight = height/(time/splitTime);
+
+    let paddingTop = parseFloat(getStyle(el, "paddingTop"));
+    let splitPaddingTop =  paddingTop/(time/splitTime);
+
+    let paddingBottom = parseFloat(getStyle(el, "paddingBottom"));
+    let splitPaddingBottom = paddingBottom/(time/splitTime);
+
+    el.style.overflow = "hidden";
+
+    el.dataUid = setInterval(()=>{
+      if (height <= 0) {
+        el.style.height = 0;
+        el.style.paddingTop = 0;
+        el.style.paddingBottom = 0;
+        /**
+         * 防止最后一刻的动画卡壳效果
+         */
+        setTimeout(()=>{
+          el.style.height = "";
+          el.style.overflow = "";
+          el.style.paddingTop = "";
+          el.style.paddingBottom = "";
+          el.style.display = "none";
+        },0);
+
+        if (fn && typeof fn === "function") fn();
+        clearInterval(el.dataUid);
+        el.dataUid = null;
+        delete el.dataUid;
+
+      } else {
+        el.style.height = height + "px";
+        el.style.paddingTop = paddingTop + "px";
+        el.style.paddingBottom = paddingBottom + "px";
+      }
+      height = height - splitHeight;
+      paddingBottom = paddingBottom - splitPaddingBottom;
+      paddingTop = paddingTop - splitPaddingTop;
+
+    }, splitTime);
+  }
+}
+
+
 export const Common = {
     seo,
     throttle,
@@ -94,7 +232,10 @@ export const Common = {
     getUuid,
     unique,
     filterChineseWord,
-    getIPAddress
+    getIPAddress,
+    getStyle,
+    getCurrentStyle,
+    slideToggle
 };
 
 export default Common;

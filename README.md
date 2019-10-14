@@ -81,6 +81,20 @@ console.log(Utils.Common.getRandomNum(1,30));
   
   9.nodejs获取本地ip
   Utils.Common.getIPAddress()
+  
+  10.获取元素实际样式值
+  let dom = document.getElementById("demo");
+  Utils.Common.getStyle(dom, "height");
+  
+  11.获取display：none的元素的宽度高度等
+  Utils.Common.getCurrentStyle(dom, "height")
+  
+  12. * 实现jquery sildeToggle效果
+      * @param el dom元素
+      * @param time 动画时长，默认值300ms
+      * @param fn 回调函数
+      * @returns {boolean}
+   Utils.Common.slideToggle( dom,300,function(){})
 ```
   
 #### Valid 表单校验模块
