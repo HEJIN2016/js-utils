@@ -73,6 +73,7 @@ function filterChineseWord(str) {
 
 // nodejs获取本地ip
 function getIPAddress() {
+  const os = require('os');
   let interfaces = os.networkInterfaces();
   for (let devName in interfaces) {
     let iface = interfaces[devName];
