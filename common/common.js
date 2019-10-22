@@ -71,9 +71,13 @@ function filterChineseWord(str) {
     return str.replace(/[\u4E00-\u9FA5]/g, '');
 }
 
-// nodejs获取本地ip
-function getIPAddress() {
-  const os = require('os');
+/**
+ * nodejs获取本地ip
+ * @param os node.js os模块
+ * @returns {*}
+ */
+function getIPAddress(os) {
+  if (!os) return '';
   let interfaces = os.networkInterfaces();
   for (let devName in interfaces) {
     let iface = interfaces[devName];
