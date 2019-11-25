@@ -90,13 +90,46 @@ function getIPAddress(os) {
   }
 }
 
+/**
+ * 获取元素实际样式值
+ * @param el dom元素
+ * @param styleName 样式名
+ */
 function getStyle(el, styleName) {
   if (el.currentStyle) return el.currentStyle[styleName];
   if (getComputedStyle) return window.getComputedStyle(el, null)[styleName];
   return el.style[styleName];
 }
 
-// getHeight
+// 优雅降级requestAnimationFrame
+const requestAnimationF = (function () {
+  return window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    // if all else fails, use setTimeout
+    function (callback) {
+      return window.setTimeout(callback, 1000 / 60); // shoot for 60 fps
+    };
+})();
+
+// 优雅降级cancelAnimationFrame
+const cancelAnimationF = (function () {
+  return window.cancelAnimationFrame ||
+    window.webkitCancelAnimationFrame ||
+    window.mozCancelAnimationFrame ||
+    window.oCancelAnimationFrame ||
+    function (id) {
+      window.clearTimeout(id);
+    };
+})();
+
+
+/**
+ * 获取元素实际高度
+ * @param el  dom元素
+ * @returns {number} 元素高度
+ */
 function getHeight(el) {
   let height;
   // 已隐藏的元素
@@ -113,7 +146,12 @@ function getHeight(el) {
   return parseFloat(getStyle(el, "height"));
 }
 
-// 获取元素样式值
+/**
+ * 获取已隐藏元素的css值
+ * @param el
+ * @param styleName
+ * @returns {*}
+ */
 function getCurrentStyle(el, styleName) {
   let styleValue;
   // 已隐藏的元素
@@ -131,76 +169,88 @@ function getCurrentStyle(el, styleName) {
 }
 
 /**
- * 实现jquery sildeToggle效果
+ * 优化实现sildeToggle效果
  * @param el dom元素
- * @param time 动画时长，默认值300ms
+ * @param time 动画时长，单位ms，默认值300
  * @param fn 回调函数
- * @returns {boolean}
  */
 function slideToggle(el, time, fn) {
   if (!el) return false;
   time = time || 300;
   if (el.dataUid) return false; // 如该dom元素已有动画未处理完，则必须等到动画结束才执行
 
-  let splitTime = 5;
+  cancelAnimationF(el.dataUid);
 
   // 已隐藏的元素，下拉
   if (getStyle(el, "display") === "none" || getHeight(el) === 0) {
+    let aniSplitTime = Date.now();
+
     let height = 0, paddingTop = 0, paddingBottom = 0;
     let totalHeight = parseFloat(getCurrentStyle(el, "height"));
     let totalPaddingTop = parseFloat(getCurrentStyle(el, "paddingTop"));
     let totalPaddingBottom = parseFloat(getCurrentStyle(el, "paddingBottom"));
 
-    let splitHeight = totalHeight/(time/splitTime);
-    let splitPaddingTop = totalPaddingTop/(time/splitTime);
-    let splitPaddingBottom = totalPaddingBottom/(time/splitTime);
+    let basePaddingBottom = totalPaddingBottom/time;
+    let basePaddingTop = totalPaddingBottom/time;
+    let baseHeight = totalHeight/time;
 
     el.style.overflow = "hidden";
     el.style.display = "block";
 
-    el.dataUid = setInterval(()=>{
-      if (height >= totalHeight) {
+    el.dataUid = requestAnimationF(function go(){
+      let aniTime = Date.now();
+      let splitTime = aniTime - aniSplitTime;
+      aniSplitTime = aniTime;
+      let splitPaddingBottom = basePaddingBottom*splitTime;
+      let splitPaddingTop = basePaddingTop*splitTime;
+      let splitHeight = baseHeight*splitTime;
+
+      if (height >= totalHeight){
         el.style.overflow = "";
         el.style.height = "";
         el.style.paddingTop = "";
         el.style.paddingBottom = "";
 
         if (fn && typeof fn === "function") fn();
-        clearInterval(el.dataUid);
+        cancelAnimationF(el.dataUid);
         el.dataUid = null;
         delete el.dataUid;
       } else {
         el.style.height = height + "px";
         el.style.paddingTop = paddingTop + "px";
         el.style.paddingBottom = paddingBottom + "px";
+        el.dataUid = requestAnimationF(go);
       }
       height = height + splitHeight;
       paddingTop = paddingTop + splitPaddingTop;
       paddingBottom = paddingBottom + splitPaddingBottom;
-
-    }, splitTime);
+    });
 
   } else {
     // 上拉
+    let aniSplitTime = Date.now();
     let height = getHeight(el);
-    let splitHeight = height/(time/splitTime);
-
     let paddingTop = parseFloat(getStyle(el, "paddingTop"));
-    let splitPaddingTop =  paddingTop/(time/splitTime);
-
     let paddingBottom = parseFloat(getStyle(el, "paddingBottom"));
-    let splitPaddingBottom = paddingBottom/(time/splitTime);
-
     el.style.overflow = "hidden";
 
-    el.dataUid = setInterval(()=>{
+    let basePaddingBottom = paddingBottom/time;
+    let basePaddingTop = paddingTop/time;
+    let baseHeight = height/time;
+
+    el.dataUid = requestAnimationF(function go(){
+      let aniTime = Date.now();
+      let splitTime = aniTime - aniSplitTime;
+      aniSplitTime = aniTime;
+      let splitPaddingBottom = basePaddingBottom*splitTime;
+      let splitPaddingTop = basePaddingTop*splitTime;
+      let splitHeight = baseHeight*splitTime;
+
       if (height <= 0) {
         el.style.height = 0;
         el.style.paddingTop = 0;
         el.style.paddingBottom = 0;
-        /**
-         * 防止最后一刻的动画卡壳效果
-         */
+
         setTimeout(()=>{
           el.style.height = "";
           el.style.overflow = "";
@@ -210,23 +260,22 @@ function slideToggle(el, time, fn) {
         },0);
 
         if (fn && typeof fn === "function") fn();
-        clearInterval(el.dataUid);
+        cancelAnimationF(el.dataUid);
         el.dataUid = null;
         delete el.dataUid;
-
       } else {
         el.style.height = height + "px";
         el.style.paddingTop = paddingTop + "px";
         el.style.paddingBottom = paddingBottom + "px";
+        el.dataUid = requestAnimationF(go);
       }
+
       height = height - splitHeight;
       paddingBottom = paddingBottom - splitPaddingBottom;
       paddingTop = paddingTop - splitPaddingTop;
-
-    }, splitTime);
+    });
   }
 }
-
 
 export const Common = {
     seo,
