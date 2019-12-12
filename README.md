@@ -96,6 +96,20 @@ console.log(Utils.Common.getRandomNum(1,30));
       * @param fn 回调函数
       * @returns {boolean}
    Utils.Common.slideToggle( dom,300,function(){})
+   
+  13. * 实现jquery sildeUp效果
+        * @param el dom元素
+        * @param time 动画时长，默认值300ms
+        * @param fn 回调函数
+        * @returns {boolean}
+     Utils.Common.slideUp( dom,300,function(){})
+     
+  14. * 实现jquery sildeDown效果
+          * @param el dom元素
+          * @param time 动画时长，默认值300ms
+          * @param fn 回调函数
+          * @returns {boolean}
+       Utils.Common.sildeDown( dom,300,function(){})
 ```
   
 #### Valid 表单校验模块

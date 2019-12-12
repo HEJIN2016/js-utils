@@ -19,3 +19,12 @@ Utils.Observer.subscribe('test', function (e) {
 Utils.Observer.publish('test', {
   msg: '参数'
 });
+let time = 0;
+document.getElementById("point").onclick = ()=>{
+    if (time===1) {
+        Common.slideUp(document.getElementById("elem"), 300);
+        return false;
+    }
+    Common.slideDown(document.getElementById("elem"), 300);
+    ++time;
+}
