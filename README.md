@@ -110,6 +110,18 @@ console.log(Utils.Common.getRandomNum(1,30));
           * @param fn 回调函数
           * @returns {boolean}
        Utils.Common.sildeDown( dom,300,function(){})
+       
+  15.将base64/dataurl转成File
+         
+         @params dataurl - dataUrl, filename
+         
+         Utils.Common.dataURLtoFile(dataUrl, filename)
+         
+  16.获取File 对象或 Blob 对象的临时路径
+           
+           @params file - File/Blob对象
+           
+           Utils.Common.getObjectURL(file)
 ```
   
 #### Valid 表单校验模块

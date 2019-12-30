@@ -31,6 +31,40 @@ const dataURLtoBlob = (dataurl)=>{
     return new Blob([u8arr], {type:mime});
 };
 
+/**
+ * 将base64/dataurl转成File
+ * @param dataurl
+ * @param filename
+ * @returns {File}
+ */
+function dataURLtoFile(dataurl, filename) {
+    let arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+}
+
+// 获取File 对象或 Blob 对象的临时路径
+function getObjectURL(file) {
+    let url = null;
+    if (window.createObjectURL) {
+        // basic
+        url = window.createObjectURL(file);
+    } else if (window.URL) {
+        // mozilla(firefox)
+        url = window.URL.createObjectURL(file);
+    } else if (window.webkitURL) {
+        // webkit or chrome
+        url = window.webkitURL.createObjectURL(file);
+    }
+    return url;
+}
+
 // 获取n-m的随机整数
 const getRandomNum = (n, m)=> {
     return Math.ceil(Math.random()*(m-n), n);
@@ -335,7 +369,9 @@ export const Common = {
     getCurrentStyle,
     slideToggle,
     slideUp,
-    slideDown
+    slideDown,
+    getObjectURL,
+    dataURLtoFile
 };
 
 export default Common;
