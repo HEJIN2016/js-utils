@@ -2,12 +2,10 @@
 // console.log(Base64);
 
 import Utils from "../dist/utils.min";
-console.log(Utils);
 
-import { Md5 } from "../index";
-console.log(Md5);
+import { Md5 } from "../dist/utils.min";
 
-const Common = require('../common/common').default;
+const Common = require("../dist/utils.min");
 console.log(Common);
 
 // 订阅消息
@@ -19,12 +17,7 @@ Utils.Observer.subscribe('test', function (e) {
 Utils.Observer.publish('test', {
   msg: '参数'
 });
-let time = 0;
+
 document.getElementById("point").onclick = ()=>{
-    if (time===1) {
-        Common.slideUp(document.getElementById("elem"), 300);
-        return false;
-    }
-    Common.slideDown(document.getElementById("elem"), 300);
-    ++time;
+    Utils.Common.slideToggle(document.getElementById("elem"), 300);
 }

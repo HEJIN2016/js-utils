@@ -3,7 +3,7 @@ import md5 from './encrypt/md5';
 import common from './common/common';
 import valid from './common/valid';
 // import Country from './common/worldCountry';
-import explorer from  './explorer/explorer';
+import explorer from './explorer/explorer';
 import cookie from './common/cookie'
 import observer from './pattern/observer'
 
