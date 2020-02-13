@@ -14,7 +14,6 @@ const seo = function() {
 
 // 函数节流
 const throttle = function(method, context) {
-    console.log(context);
     clearTimeout(method.tId);
     method.tId = setTimeout(function () {
         method.call(context);

@@ -1,6 +1,6 @@
 {
   "name": "h-utils.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "js utils",
   "main": "dist/utils.min",
   "scripts": {
