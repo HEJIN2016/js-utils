@@ -354,6 +354,30 @@ function slideUp(el, time, fn) {
     }
 }
 
+/**
+ * 获取当天的23:59:59的Date对象（当天最后1ms的Date对象）
+ * @param date （默认值new Date()）
+ * @returns {Date}
+ */
+function getDayLastMsDate(date = new Date()) {
+    if (!date instanceof Date) {
+        throw new Error("function params type error");
+    }
+    return new Date(new Date(date.toLocaleDateString()).getTime()+24*60*60*1000-1)
+}
+
+/**
+ * 获取当天的00:00的Date对象（当天最开始1ms的Date对象）
+ * @param date （默认值new Date()）
+ * @returns {Date}
+ */
+function getDayFirstMsDate(date = new Date()) {
+    if (!date instanceof Date) {
+        throw new Error("function params type error");
+    }
+    return new Date(date.toLocaleDateString())
+}
+
 export const Common = {
     seo,
     throttle,
@@ -370,7 +394,9 @@ export const Common = {
     slideUp,
     slideDown,
     getObjectURL,
-    dataURLtoFile
+    dataURLtoFile,
+    getDayLastMsDate,
+    getDayFirstMsDate
 };
 
 export default Common;

@@ -122,6 +122,24 @@ console.log(Utils.Common.getRandomNum(1,30));
            @params file - File/Blob对象
            
            Utils.Common.getObjectURL(file)
+
+  17. /**
+       * 获取当天的23:59:59的Date对象（当天最后1ms的Date对象）
+       * @param date （默认值new Date()）
+       * @returns {Date}
+       */
+
+       var a = new Date();
+       Utils.Common.getDayLastMsDate(a);
+
+  18. /**
+       * 获取当天的00:00的Date对象（当天最开始1ms的Date对象）
+       * @param date （默认值new Date()）
+       * @returns {Date}
+       */
+
+       var a = new Date();
+       Utils.Common.getDayFirstMsDate(a);
 ```
   
 #### Valid 表单校验模块
