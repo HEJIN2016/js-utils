@@ -1,12 +1,12 @@
-// import { Base64 } from "../encrypt/base64";
-// console.log(Base64);
-
 import Utils from "../dist/utils.min";
+console.log(Utils.Observer);
 
-import { Md5 } from "../dist/utils.min";
+import { Common } from "../src/index";
+console.log(Common)
 
-const Common = require("../dist/utils.min");
-console.log(Common);
+const Common1 = require("../dist/utils.min");
+console.log(Common1)
+console.log(Common1.Md5);
 
 // 订阅消息
 

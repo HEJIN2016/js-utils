@@ -378,6 +378,55 @@ function getDayFirstMsDate(date = new Date()) {
     return new Date(date.toLocaleDateString())
 }
 
+/*
+  压缩图片
+  dataUrl： dataUrl，
+  obj：{ height, width } 压缩之后的图片宽高
+  type：压缩完之后的图片类型
+*/
+function photoCompress(dataUrl, obj, type = "image/png"){
+    return new Promise((resolve, reject) => {
+        let img = new Image();
+        img.src = dataUrl;
+        img.onload = function(){
+            let that = this;
+            // 默认按比例压缩
+            let w = that.width,
+              h = that.height,
+              scale = w / h;
+            if (h >= obj.height)  {
+                h = obj.height;
+            }
+            w = (h * scale);
+
+            let quality = 1;  // 默认图片质量为1
+            //生成canvas
+            let canvas = document.createElement('canvas');
+            let ctx = canvas.getContext('2d');
+            // 创建属性节点
+            let anw = document.createAttribute("width");
+            anw.nodeValue = w;
+            let anh = document.createAttribute("height");
+            anh.nodeValue = h;
+            canvas.setAttributeNode(anw);
+            canvas.setAttributeNode(anh);
+            ctx.drawImage(that, 0, 0, w, h);
+            // 图像质量
+            if(obj.quality && obj.quality <= 1 && obj.quality > 0){
+                quality = obj.quality;
+            }
+            // quality值越小，所绘制出的图像越模糊
+            let base64 = canvas.toDataURL(type, quality);
+            // 回调函数返回base64的值
+            resolve(base64);
+        };
+        img.onerror = ()=>{
+            reject();
+        }
+    })
+
+}
+
 export const Common = {
     seo,
     throttle,
@@ -396,7 +445,8 @@ export const Common = {
     getObjectURL,
     dataURLtoFile,
     getDayLastMsDate,
-    getDayFirstMsDate
+    getDayFirstMsDate,
+    photoCompress
 };
 
 export default Common;

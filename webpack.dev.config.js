@@ -4,6 +4,7 @@ const path = require('path');
 const portfinder = require("portfinder");
 
 let devWebpackConfig = {
+    mode: 'development',
     entry: {
         app: path.join(__dirname, 'dev', 'index.js')
     },
@@ -28,7 +29,8 @@ let devWebpackConfig = {
         host: HOST,
         port: PORT,
         open: false
-    }
+    },
+  devtool: "#inline-source-map"
 };
 
 module.exports = new Promise((resolve, reject) => {
