@@ -149,6 +149,10 @@ console.log(Utils.Common.getRandomNum(1,30));
       type：压缩完之后的图片类型
     */
     Utils.Common.photoCompress(dataUrl, { height:300,width:300,quality:1 },"image/png")
+
+   20.获取文件后缀格式名
+    Utils.Common.getFileType("sabc.png"); // png
+
 ```
   
 #### Common 表单校验模块

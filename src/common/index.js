@@ -427,6 +427,13 @@ function photoCompress(dataUrl, obj, type = "image/png"){
 
 }
 
+// 获取文件格式(后缀)
+function getFileType(fileName = '') {
+    let index = fileName.lastIndexOf(".");
+    if (index >= 0) return fileName.substring(index + 1);
+    return "";
+}
+
 export const Common = {
     seo,
     throttle,
@@ -446,7 +453,8 @@ export const Common = {
     dataURLtoFile,
     getDayLastMsDate,
     getDayFirstMsDate,
-    photoCompress
+    photoCompress,
+    getFileType
 };
 
 export default Common;
