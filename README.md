@@ -153,6 +153,9 @@ console.log(Utils.Common.getRandomNum(1,30));
    20.获取文件后缀格式名
     Utils.Common.getFileType("sabc.png"); // png
 
+   21.获取随机字符串
+   Utils.Common.getRandomStr()
+
 ```
   
 #### Common 表单校验模块
