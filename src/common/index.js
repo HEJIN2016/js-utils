@@ -30,6 +30,11 @@ const dataURLtoBlob = (dataurl)=>{
     return new Blob([u8arr], {type:mime});
 };
 
+// 生成随机字符串
+function getRandomStr(){
+    return Math.random().toString(36).substring(2)
+}
+
 /**
  * 将base64/dataurl转成File
  * @param dataurl
@@ -441,6 +446,7 @@ export const Common = {
     getRandomNum,
     splitNum,
     getUuid,
+    getRandomStr,
     unique,
     filterChineseWord,
     getIPAddress,
