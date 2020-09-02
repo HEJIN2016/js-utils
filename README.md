@@ -156,6 +156,10 @@ console.log(Utils.Common.getRandomNum(1,30));
    21.获取随机字符串
    Utils.Common.getRandomStr()
 
+   22.数组洗牌（重新随机排列）
+   const arr = [1,2,3,4]
+   Utils.Common.arrayShuffle(arr)
+
 ```
   
 #### Common 表单校验模块

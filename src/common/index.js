@@ -439,6 +439,17 @@ function getFileType(fileName = '') {
     return "";
 }
 
+// 重排数组（洗牌算法）
+function arrayShuffle(input) {
+    for (var i = input.length-1; i >=0; i--) {
+        var randomIndex = Math.floor(Math.random()*(i+1));
+        var itemAtIndex = input[randomIndex];
+        input[randomIndex] = input[i];
+        input[i] = itemAtIndex;
+    }
+    return input;
+}
+
 export const Common = {
     seo,
     throttle,
@@ -460,7 +471,8 @@ export const Common = {
     getDayLastMsDate,
     getDayFirstMsDate,
     photoCompress,
-    getFileType
+    getFileType,
+    arrayShuffle
 };
 
 export default Common;
